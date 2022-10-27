@@ -1,12 +1,24 @@
+import User from  "../models/User.js";
+
 const register = async (req, res) => {
-    res.send('register user')
+  try {
+    const user = await User.create(req.body)
+    res.status(201).json({ user });
+  } catch (error) {
+    res.status(500).json({ msg: "there was an error" });
+  }
 }
+
+// const register = async (req, res) => {
+//   res.send("register user");
+// };
+
 const login = async (req, res) => {
-    res.send('login user')
-}
+  res.send("login user");
+};
+
 const updateUser = async (req, res) => {
-    res.send('updateUser user')
-}
+  res.send("updateUser user");
+};
 
-
-export {register, login, updateUser}
+export { register, login, updateUser };
