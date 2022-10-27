@@ -1,8 +1,8 @@
 import User from "../models/User.js";
 import {StatusCodes} from 'http-status-codes'
-import { BadRequestError, NotFoundError } from "../error/index.js";
+import { BadRequestError } from "../error/index.js";
 
-const register = async (req, res, next) => {
+const register = async (req, res) => {
   const { name, email, password } = req.body;
   
   if (!name || !email || !password) { 
@@ -13,9 +13,9 @@ const register = async (req, res, next) => {
   if (userAlreadyExist) {
     throw new BadRequestError("Email already in use");
   }
-  
+
   const user = await User.create({ name, email, password })
-    res.status(StatusCodes.create).json({ user });
+    res.status(StatusCodes.OK).json({ user });
 }
 
 
