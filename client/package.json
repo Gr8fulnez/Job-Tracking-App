@@ -48,8 +48,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Gr8fulnez/Job-Tracking-App/issues"
-  },
-  "homepage": "https://github.com/Gr8fulnez/Job-Tracking-App#readme"
+   "proxy": "http://localhost:5000"
 }
