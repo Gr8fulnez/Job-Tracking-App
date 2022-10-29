@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Logo, FormRow, Alert} from '../components';
 import Wrapper from '../assets/css/wrappers/RegisterPage';
 import { useAppContext } from '../context/appContext';
@@ -16,7 +16,7 @@ const Register = () => {
     const [values, setValues] = useState(initialState);
 
     //global state and useNavigate 
-    const {isLoading, showAlert, displayAlert} = useAppContext()
+    const {isLoading, showAlert, displayAlert, registerUser} = useAppContext()
 
 
     const toggleMember = () => {
@@ -34,7 +34,14 @@ const Register = () => {
       displayAlert()
       return
     }
-    console.log(values)
+    
+    const currentUser = { name, email, password }
+    if (isMember) {
+      console.log('already a member')
+    }
+    else{
+      registerUser(currentUser)
+    }
     }
     return (
       <Wrapper className="full-page">
@@ -66,12 +73,12 @@ const Register = () => {
             handleChange={handleChange}
           />
 
-          <button type="submit" className="btn btn-block">
+          <button type="submit" className="btn btn-block" disabled={isLoading}>
             Submit
           </button>
             <p>
-                    {values.isMember?'Not a member yet':'Already a member?'}
-                <button type="button" onClick={toggleMember}className="member-btn">
+                    {values.isMember ? 'Not a member yet': 'Already a member?'}
+                <button type="button" onClick={toggleMember} className="member-btn">
                     {values.isMember ? 'Register' : 'Login'}
                 </button>
             </p>
