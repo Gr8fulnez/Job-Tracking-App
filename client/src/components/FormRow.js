@@ -16,4 +16,4 @@ const FormRow = ({ type, handleChange, value, name, labelText }) =>
   );
 }
 
-export default FormRow;
+export default FormRow; 
