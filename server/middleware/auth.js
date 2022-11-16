@@ -14,8 +14,8 @@ try {
 //   console.log(payload)
   // attach the user request object
 //   req.user = payload
-  req.user = { userId: payload.id };
-  next();
+    req.user = { userId: payload.userId };
+  next(); 
 } catch (error) {
   throw new UnauthenticatedError("Authentication invalid");
 }
